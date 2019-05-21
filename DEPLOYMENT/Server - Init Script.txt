@@ -1,3 +1,6 @@
+Java 8, MCR 2018a, Ubuntu
+
+
 ********** INSTALL UNZIP **********
 apt-get install unzip
 
