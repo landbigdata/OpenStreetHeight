@@ -53,6 +53,6 @@ echo $LD_LIBRARY_PATH
 
 sudo mkdir /home/osh
 
-wget -O /home/osh/server.jar "https://drive.google.com/uc?export=download&confirm=some_random_stuff&id=1wGoUD1Hu9JG1iUhLjUSi_5dQR9Ab72mN"
+wget -O /home/osh/server.jar "your_link_here"
 
 java -jar /home/osh/server.jar
