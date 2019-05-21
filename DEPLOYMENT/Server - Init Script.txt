@@ -12,7 +12,7 @@ apt-get install unzip
 
 apt-get install openjdk-8-jre
 
-sudo update-alternatives --config java
+update-alternatives --config java
 ======>>> /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
@@ -27,8 +27,8 @@ echo $JAVA_HOME
 ********* INSTALL MCR **********
 
 
-sudo mkdir /tmp/matlab
-sudo mkdir /tmp/matlab/mcr
+mkdir /tmp/matlab
+mkdir /tmp/matlab/mcr
 
 wget -O /tmp/matlab/mcr/MCR-files.zip "https://bit.ly/2QfSp02" ["http://ssd.mathworks.com/supportfiles/downloads/R2018a/deployment_files/R2018a/installers/glnxa64/MCR_R2018a_glnxa64_installer.zip"]
 
@@ -51,7 +51,7 @@ echo $LD_LIBRARY_PATH
 
 ************* INSTALL & RUN JAR *************
 
-sudo mkdir /home/osh
+mkdir /home/osh
 
 wget -O /home/osh/server.jar "your_link_here"
 
