@@ -37,7 +37,7 @@ Communication with client is done via JSON.
 ![](Wiki/1.png)  |  ![](Wiki/2.png)
 ![](Wiki/3.png)  |  ![](Wiki/4.png)
 ![](Wiki/5.png)  |  ![](Wiki/6.png)
-![](Wiki/7.png)  | 
+![](Wiki/7.png)  |  ![](Wiki/8.png)
 
 ## License
 
