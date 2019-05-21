@@ -1,0 +1,55 @@
+********** INSTALL UNZIP **********
+apt-get install unzip
+
+
+
+
+
+********** INSTALL JRE **********
+
+apt-get install openjdk-8-jre
+
+sudo update-alternatives --config java
+======>>> /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+
+echo $JAVA_HOME
+
+
+
+
+
+********* INSTALL MCR **********
+
+
+sudo mkdir /tmp/matlab
+sudo mkdir /tmp/matlab/mcr
+
+wget -O /tmp/matlab/mcr/MCR-files.zip "https://bit.ly/2QfSp02" ["http://ssd.mathworks.com/supportfiles/downloads/R2018a/deployment_files/R2018a/installers/glnxa64/MCR_R2018a_glnxa64_installer.zip"]
+
+unzip /tmp/matlab/mcr/MCR-files.zip -d /tmp/matlab/mcr/MCR-files
+
+sudo /tmp/matlab/mcr/MCR-files/install -mode silent -agreeToLicense yes
+
+export LD_LIBRARY_PATH="
+/usr/local/MATLAB/MATLAB_Runtime/v94/runtime/glnxa64:
+/usr/local/MATLAB/MATLAB_Runtime/v94/bin/glnxa64:
+/usr/local/MATLAB/MATLAB_Runtime/v94/sys/os/glnxa64:
+/usr/local/MATLAB/MATLAB_Runtime/v94/extern/bin/glnxa64
+"
+
+echo $LD_LIBRARY_PATH
+
+
+
+
+
+************* INSTALL & RUN JAR *************
+
+sudo mkdir /home/osh
+
+wget -O /home/osh/server.jar "https://drive.google.com/uc?export=download&confirm=some_random_stuff&id=1wGoUD1Hu9JG1iUhLjUSi_5dQR9Ab72mN"
+
+java -jar /home/osh/server.jar
