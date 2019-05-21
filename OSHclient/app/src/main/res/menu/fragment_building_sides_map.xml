@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/toggle_follow_bearing"
+        android:icon="@drawable/ic_navigation_off_24dp"
+        android:title="@string/map_toggle_follow_bearing"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/nav_undo"
+        android:icon="@drawable/ic_undo_white_24dp"
+        android:title="@string/nav_undo"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/nav_continue"
+        android:icon="@drawable/ic_chevron_right_white_24dp"
+        android:title="@string/nav_continue"
+        app:showAsAction="always" />
+
+</menu>

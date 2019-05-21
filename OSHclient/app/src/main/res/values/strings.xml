@@ -1,0 +1,87 @@
+<resources>
+    <!-- General -->
+    <string name="app_name">OpenStreetHeight</string>
+    <string name="nav_continue">Continue</string>
+    <string name="nav_finish">Finish</string>
+    <string name="nav_undo">Undo</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    
+    <!-- Main Activity Internet Access Dialog -->
+    <string name="main_dialog_internet_title">Please enable Internet</string>
+    <string name="main_dialog_internet_body">
+        It is needed:
+
+        1. Right now to check whether your camera is supported.
+        2. In the end to obtain height of your building.
+
+        This dialog will disappear once connection is established.
+    </string>
+    
+    <!-- Main Activity Camera Params Dialog -->
+    <string name="main_dialog_camera_title">Check parameters of your camera</string>
+    <string name="main_dialog_camera_focal_length_title">Focal length, mm</string>
+    <string name="main_dialog_camera_pixel_size_title">Pixel size, μm</string>
+    <string name="main_dialog_camera_approve">Approve</string>
+    <string name="main_dialog_camera_exit">Exit</string>
+
+    <!-- Section Intro Map -->
+    <string name="intro_pick_corners">Pick corners</string>
+
+    <!-- Section Map -->
+    <string name="map_1_long_tap_title">1. Do long tap</string>
+    <string name="map_on_your_building_subtitle">On your building</string>
+
+    <string name="map_toggle_follow_bearing">Toggle Follow bearing</string>
+
+    <string name="map_2_tap_title">2. Do tap</string>
+    <string name="map_3_tap_title">3. Do tap</string>
+    <string name="map_4_tap_title">4. Do tap</string>
+    <string name="map_on_the_closest_corner_subtitle">On the closest corner</string>
+    <string name="map_on_the_left_corner_subtitle">On the left corner</string>
+    <string name="map_on_the_right_corner_subtitle">On the right corner</string>
+
+    <string name="map_marker_type_middle">M</string>
+    <string name="map_marker_type_left">L</string>
+    <string name="map_marker_type_right">R</string>
+
+    <string name="map_error_no_building_found">No building found</string>
+    <string name="map_snack_disable_follow_bearing">To stop bearing following\npress on purple triangle in menu</string>
+
+    <string name="map_snack_compass_accuracy_low">Compass accuracy: LOW\nCalibration is strongly recommended</string>
+    <string name="map_snack_compass_accuracy_unreliable">Compass accuracy: UNRELIABLE\nCalibrate or get away from metal object</string>
+    <string name="map_snack_enable_internet">Please, enable Internet</string>
+
+    <!-- Section Photo -->
+    <string name="photo_make_shot">Make shot</string>
+    <string name="photo_pick_six_corner_points">Pick 6 corner points</string>
+    <string name="photo_set_camera_params">Set camera params</string>
+
+    <string name="photo_snack_enable_internet">Please, enable Internet\nto auto-obtain camera lens parameters</string>
+
+    <!-- Section Corners -->
+    <string name="corners_left_top_short">LT</string>
+    <string name="corners_middle_top_short">MT</string>
+    <string name="corners_right_top_short">RT</string>
+    <string name="corners_left_bottom_short">LB</string>
+    <string name="corners_right_bottom_short">RB</string>
+    <string name="corners_middle_bottom_short">MB</string>
+
+
+    <!-- Section Finish -->
+    <string name="finish_height_is">Height is:</string>
+    <string name="finish_meter_short_placeholder">%.2f m</string>
+
+    <string name="finish_put_height_in_osm">Put height in OpenStreetMap</string>
+    <string name="finish_share_height_with_friends">Share height with friends</string>
+    <string name="finish_repeat">Repeat</string>
+    <string name="finish_how_it_works_and_authors">How it works &amp; authors</string>
+    <string name="finish_licenses">Licenses</string>
+    <string name="finish_height_sent_to_osm">Height sent to OSM!</string>
+
+    <string name="finish_overwrite_height_title">Building height</string>
+    <string name="finish_overwrite_height_body_placeholder">Overwrite existing height?\n%.2f m</string>
+
+    <string name="finish_snack_enable_internet">Please, enable Internet\nso you can obtain building height</string>
+
+</resources>

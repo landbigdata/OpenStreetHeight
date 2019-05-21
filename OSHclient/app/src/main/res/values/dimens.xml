@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Section Photo -->
+    <dimen name="corner_point_side">32dp</dimen>
+    <dimen name="photo_line_width">6dp</dimen>
+    <dimen name="photo_touch_area_magnifier_side">100dp</dimen>
+    <dimen name="photo_touch_area_magnifier_mask">130dp</dimen>
+</resources>
