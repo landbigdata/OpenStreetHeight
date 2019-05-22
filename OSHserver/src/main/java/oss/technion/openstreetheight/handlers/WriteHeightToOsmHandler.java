@@ -17,11 +17,11 @@ import java.util.Map;
 import static ratpack.jackson.Jackson.fromJson;
 
 public class WriteHeightToOsmHandler {
-    private static String CONSUMER_KEY = "a";
-    private static String CONSUMER_SECRET = "aa";
+    private static String CONSUMER_KEY = "R8wMU2ezkp3ijpIcuAnKD4HSRCqfmf69NknPoSNA";
+    private static String CONSUMER_SECRET = "40CZ42WcGZQ4PGBEqmi5lkUqrWGIh0xMZd6pZ1ap";
 
-    private static String TOKEN = "a";
-    private static String TOKEN_SECRET = "aa";
+    private static String TOKEN = "7ajTLyWFhFsweFGOBbP7uMkRXs7wkAoNHpyBKRTF";
+    private static String TOKEN_SECRET = "z0AzLoHa8OJYiLFfzrkRc8qva4qUKzHiio3p1pLY";
 
     private static String API_URL = "https://api.openstreetmap.org/api/0.6/";
     private static String USER_AGENT = "OpenStreetHeight Server";

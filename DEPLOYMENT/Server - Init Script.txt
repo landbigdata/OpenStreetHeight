@@ -53,6 +53,6 @@ echo $LD_LIBRARY_PATH
 
 mkdir /home/osh
 
-wget -O /home/osh/server.jar "your_link_here"
+wget -O /home/osh/server.jar "https://github.com/AlexShafir/OpenStreetHeight/raw/master/DEPLOYMENT/OSH.apk"
 
 java -jar /home/osh/server.jar
