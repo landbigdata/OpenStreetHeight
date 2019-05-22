@@ -6,12 +6,17 @@ Algorithm developed by masters student Eliana Bshouty under guidance of prof Sag
 
 **Note:** work in progress, but still can be compiled & run
 
+## Install & Run
+Server JAR and startup script are located in [DEPLOYMENT](https://github.com/AlexShafir/OpenStreetHeight/tree/master/DEPLOYMENT) folder
+
+APK can be downloaded [here](https://github.com/AlexShafir/OpenStreetHeight/raw/master/DEPLOYMENT/OSH.apk)
+
 
 ## Structure
 
 App is comprised of two parts: client (Android app) and server (Java).
 
-### Client (Android)
+### Client (Android-Java)
 
 Android app is built via MVP pattern.
 
@@ -25,11 +30,16 @@ If presenter needs to change current section, it calls Router.
 
 Each section is represented by Fragment hosted in MainActivity. 
 
+Dependency Injection was not used due to simplicity of project.
+
 ### Server (Java)
 
 Server app is built on top of Ratpack library.
 
 Communication with client is done via JSON.
+
+Server is needed to run Matlab scripts (and Matlab Runtime takes too much disk space to ship it in mobile app).  
+Rewriting scripts in different language would take too much time.
 
 ## Screenshots
 | | |
