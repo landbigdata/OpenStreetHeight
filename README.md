@@ -1,6 +1,6 @@
 # OpenStreetHeight
 
-OpenStreetHeight (OSH) - implementation of *building* height calculation algorithm.
+OpenStreetHeight (OSH) - implementation of **building** height calculation algorithm.
 
 Algorithm developed by masters student Eliana Bshouty under guidance of prof Sagi Dalyot.
 
