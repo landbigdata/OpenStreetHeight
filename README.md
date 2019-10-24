@@ -1,10 +1,20 @@
 # OpenStreetHeight
 
-OpenStreetHeight (OSH) - implementation of building height calculation algorithm.
+OpenStreetHeight (OSH) - implementation of **building** height calculation algorithm.
 
 Algorithm developed by masters student Eliana Bshouty under guidance of prof Sagi Dalyot.
 
 **Note:** work in progress, but still can be compiled & run
+
+## Idea
+Measure height of building only via photo and share it in OpenStreetMap aka Citizen Science.
+
+Currently user also needs to pick building on map and its closest 3 corners.  
+But it will be fixed in next versions, so that you only need to make photo.
+
+Limitations of this method:
+- Building should already be present in OpenStreetMap
+- In Android Camera API is not reliable, so you also should know in advance camera focal distance and pixel size 
 
 ## Install & Run
 Server JAR and startup script are located in [DEPLOYMENT](https://github.com/AlexShafir/OpenStreetHeight/tree/master/DEPLOYMENT) folder
