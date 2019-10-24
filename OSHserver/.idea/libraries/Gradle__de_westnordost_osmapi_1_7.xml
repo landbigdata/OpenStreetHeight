@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: de.westnordost:osmapi:1.7">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.westnordost/osmapi/1.7/311d4d9a4d2db72813c93a61b5b622c375a7cf6b/osmapi-1.7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.westnordost/osmapi/1.7/efa6b8d52c850083242b14d67d8f560ff1e7b95e/osmapi-1.7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.westnordost/osmapi/1.7/5fd0815d4db6bd027870de5b3f7f8d54cff859a3/osmapi-1.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

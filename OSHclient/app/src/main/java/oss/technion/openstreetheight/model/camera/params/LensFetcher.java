@@ -1,11 +1,10 @@
 package oss.technion.openstreetheight.model.camera.params;
 
 
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -13,7 +12,6 @@ import org.jsoup.nodes.Element;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -21,10 +19,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class LensFetcher {
     public static class LensTuple {
-        public final double focalLenght; // in m
-        public final double pixelSize; // in m
+        public final float focalLenght; // in m
+        public final float pixelSize; // in m
 
-        public LensTuple(double focalLenght, double pixelSize) {
+        public LensTuple(float focalLenght, float pixelSize) {
             this.focalLenght = focalLenght;
             this.pixelSize = pixelSize;
         }
@@ -35,27 +33,39 @@ public class LensFetcher {
     }
 
 
-    public static Maybe<LensTuple> getLensParams(String buildModel) {
-        return Single
-                .fromCallable(() -> getLensParamsInner(buildModel))
-                .filter(t -> t.pixelSize != -1 || t.focalLenght != -1)
+    public static Single<LensTuple> getLensParams(String buildModel) {
+        return Single.fromCallable(() -> getLensParamsInner(buildModel))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    // Parsing
     private static LensTuple getLensParamsInner(String buildModel) {
 
-        JSONArray possiblePhones = Rx2AndroidNetworking
+        LensTuple resultTuple = new LensTuple(-1, -1);
+
+        String possiblePhonesStr = Rx2AndroidNetworking
                 .get("https://www.devicespecifications.com/index.php")
                 .addQueryParameter("action", "search")
                 .addQueryParameter("language", "en")
                 .addQueryParameter("search", buildModel)
                 .build()
                 // Now we process output
-                .getJSONArraySingle()
+                .getStringSingle()
                 .blockingGet();
 
-        LensTuple resultTuple = new LensTuple(-1, -1);
+        if (possiblePhonesStr.equals("0")) {
+            return new LensTuple(-1, -1);
+        }
+
+
+        JSONArray possiblePhones = null;
+        try {
+            possiblePhones = new JSONArray(possiblePhonesStr);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
         for (int i = 0; i < possiblePhones.length(); i++) {
             final int j = i;
@@ -67,14 +77,14 @@ public class LensFetcher {
                     .map(url -> Jsoup.connect(url).get())
                     .blockingGet();
 
-            if (
-                    phoneDoc.title().contains(buildModel) ||
-                            phoneDoc.select("table.model-information-table.row-selection").text().contains(buildModel)
-                    ) {
-                resultTuple = getParamTupleFromDoc(phoneDoc);
+            Element paramsDiv = phoneDoc.selectFirst("div#main").child(5);
 
+
+            if (paramsDiv.select("table").first().text().contains(buildModel)) {
+                resultTuple = getParamTupleFromDoc(phoneDoc);
                 if (!resultTuple.isEmpty()) break;
-            } else {
+
+            } else{
                 break;
             }
 
@@ -84,6 +94,7 @@ public class LensFetcher {
         return resultTuple;
     }
 
+    // Parsing
     private static LensTuple getParamTupleFromDoc(Document phone) {
         // First, we need to find location of "Primary Camera" section
         int primaryCameraSectionPos = 0;
@@ -167,29 +178,12 @@ public class LensFetcher {
         }
 
 
-        double focalLength = focalLengthMm.equals("null") ? -1 : Double.valueOf(focalLengthMm) * 1e-3;
-        double pixelSize = pixelSizeMicroM.equals("null") ? -1 : Double.valueOf(pixelSizeMicroM) * 1e-6;
+        float focalLength = focalLengthMm.equals("null") ? -1 : Float.valueOf(focalLengthMm) * 1e-3f;
+        float pixelSize = pixelSizeMicroM.equals("null") ? -1 : Float.valueOf(pixelSizeMicroM) * 1e-6f;
 
         LensTuple tuple = new LensTuple(focalLength, pixelSize);
 
         return tuple;
-    }
-
-
-    private static Document getPhonePage(String deviceId) {
-
-        return Rx2AndroidNetworking
-                .get("https://www.devicespecifications.com/index.php")
-                .addQueryParameter("action", "search")
-                .addQueryParameter("language", "en")
-                .addQueryParameter("search", deviceId)
-                .build()
-                // Now we process output
-                .getJSONArraySingle()
-                .map(array -> array.getJSONObject(0))
-                .map(obj -> obj.getString("url"))
-                .map(url -> Jsoup.connect(url).get())
-                .blockingGet();
     }
 
 

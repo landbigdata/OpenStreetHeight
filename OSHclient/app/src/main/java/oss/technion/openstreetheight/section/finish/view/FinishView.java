@@ -6,9 +6,9 @@ import androidx.annotation.StringRes;
 
 import oss.technion.openstreetheight.func.Action;
 import oss.technion.openstreetheight.section.SnackbarDuration;
+import oss.technion.openstreetheight.section.ToastDuration;
 
 public interface FinishView {
-    void showBackButton(boolean isShowBackButton);
 
     interface Dialog {
         Dialog setOkAction(Action action);
@@ -18,6 +18,7 @@ public interface FinishView {
         void show();
     }
 
+    void replaceProgressBarWithHeightText();
 
     void setHeightText(@StringRes int heightText, double heightVal);
 
@@ -25,13 +26,15 @@ public interface FinishView {
 
     void setButtonEnabled(@IdRes int button, boolean enabled);
 
-    void showAboutActivity();
-
     void dismissCurrentSnackbar();
+
+    void showBackButton(boolean isShowBackButton);
+
+    void showToast(int string_id, ToastDuration dur);
 
     Dialog makeTwoButtonDialog(
             @StringRes int title,
-            @StringRes int message, Object arg,
+            @StringRes int message, Object[] args,
             @StringRes int button_yes,
             @StringRes int button_cancel
     );

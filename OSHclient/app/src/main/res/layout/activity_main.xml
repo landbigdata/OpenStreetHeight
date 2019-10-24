@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="oss.technion.openstreetheight.main.MainActivity">
+    tools:context="oss.technion.openstreetheight.main.view.MainActivity">
 
 
     <FrameLayout

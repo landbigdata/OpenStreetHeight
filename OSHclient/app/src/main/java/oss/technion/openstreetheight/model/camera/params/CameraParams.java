@@ -6,8 +6,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class CameraParams {
-    private static double focalLenght = -1;
-    private static double pixelSize = -1;
+    private static float focalLenght = -1;
+    private static float pixelSize = -1;
 
     private static int imageHeight = -1;
     private static int imageWidth = -1;
@@ -16,12 +16,12 @@ public class CameraParams {
 
 
     // measured in metres
-    public static double getPixelSize() {
+    public static float getPixelSize() {
         return pixelSize;
     }
 
     // measured in metres
-    public static double getFocalLength() {
+    public static float getFocalLength() {
         return focalLenght;
     }
 
@@ -33,7 +33,7 @@ public class CameraParams {
         return imageWidth;
     }
 
-    public static void setLensParams(double focalLength, double pixelSize) {
+    public static void setLensParams(float focalLength, float pixelSize) {
         CameraParams.focalLenght = focalLength;
         CameraParams.pixelSize = pixelSize;
     }
@@ -47,22 +47,24 @@ public class CameraParams {
 
     public static void initialize(Context context) {
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+        restoreFromPreferences();
     }
 
     public static void saveToPreferences() {
         prefs
                 .edit()
-                .putFloat("focalLength", (float) focalLenght)
-                .putFloat("pixelSize", (float) pixelSize)
+                .putFloat("focalLength", focalLenght)
+                .putFloat("pixelSize", pixelSize)
                 .putInt("imageWidth", imageWidth)
                 .putInt("imageHeight", imageHeight)
-                .commit();
+                .apply();
     }
 
     public static void restoreFromPreferences() {
-        focalLenght = prefs.getFloat("focalLength", 0);
-        pixelSize = prefs.getFloat("pixelSize", 0);
-        imageWidth = prefs.getInt("imageWidth", 0);
-        imageHeight = prefs.getInt("imageHeight", 0);
+        focalLenght = prefs.getFloat("focalLength", -1);
+        pixelSize = prefs.getFloat("pixelSize", -1);
+        imageWidth = prefs.getInt("imageWidth", -1);
+        imageHeight = prefs.getInt("imageHeight", -1);
     }
 }

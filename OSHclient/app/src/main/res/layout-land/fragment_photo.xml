@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+        app:title=" "/>
 
 
     <LinearLayout
@@ -47,15 +48,6 @@
                 android:layout_gravity="center"
                 android:text="@string/photo_make_shot" />
 
-            <Button
-                android:id="@+id/photo_set_camera_params"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/photo_make_shot"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:text="@string/photo_set_camera_params" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

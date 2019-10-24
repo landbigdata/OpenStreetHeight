@@ -32,15 +32,20 @@ public class IntroMapFragment extends Fragment implements IntroMapView {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
+        // Init Toolbar
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
 
-        actionBar.setTitle("");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
 
         presenter.onStart();
+
     }
 
     @OnClick(R.id.pick_corners_button)

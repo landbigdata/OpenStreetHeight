@@ -1,0 +1,97 @@
+[
+  {
+    "name": "osmapi",
+    "copyright": "Tobias Zwick",
+    "url_lib": "https://github.com/westnordost/osmapi",
+    "license": "GNU LGPL v3.0",
+    "url_license": "https://spdx.org/licenses/LGPL-3.0-only.html"
+  },
+
+  {
+    "name": "Android-State",
+    "copyright": "Evernote Corporation",
+    "url_lib": "https://github.com/evernote/android-state",
+    "license": "EPL 1.0",
+    "url_license": "https://spdx.org/licenses/EPL-1.0.html"
+  },
+
+  {
+    "name": "AndroidX",
+    "copyright": "The Android Open Source Project",
+    "url_lib": "https://developer.android.com/jetpack/androidx",
+    "license": "Apache License 2.0",
+    "url_license": "https://spdx.org/licenses/Apache-2.0.html"
+  },
+
+  {
+    "name": "com.google.android.material",
+    "copyright": "The Android Open Source Project",
+    "url_lib": "https://github.com/material-components/material-components-android",
+    "license": "Apache License 2.0",
+    "url_license": "https://spdx.org/licenses/Apache-2.0.html"
+  },
+
+  {
+    "name": "Google Play Services",
+    "copyright": "Google Inc.",
+    "url_lib": "https://developers.google.com/android/guides/overview",
+    "license": "Apache License 2.0",
+    "url_license": "https://spdx.org/licenses/Apache-2.0.html"
+  },
+
+  {
+    "name": "Android Maps Utils",
+    "copyright": "Google Inc.",
+    "url_lib": "https://github.com/googlemaps/android-maps-utils",
+    "license": "Apache License 2.0",
+    "url_license": "https://spdx.org/licenses/Apache-2.0.html"
+  },
+
+  {
+    "name": "Jsoup",
+    "copyright": "Jonathan Hedley",
+    "url_lib": "https://github.com/jhy/jsoup",
+    "license": "MIT License",
+    "url_license": "https://spdx.org/licenses/Apache-2.0.html"
+  },
+
+  {
+    "name": "Fast Android Networking",
+    "copyright": "Amit Shekhar",
+    "url_lib": "https://github.com/amitshekhariitbhu/Fast-Android-Networking",
+    "license": "Apache License 2.0",
+    "url_license": "https://spdx.org/licenses/Apache-2.0.html"
+  },
+
+  {
+    "name": "RxJava",
+    "copyright": "RxJava Contributors",
+    "url_lib": "https://github.com/ReactiveX/RxJava",
+    "license": "Apache License 2.0",
+    "url_license": "https://spdx.org/licenses/Apache-2.0.html"
+  },
+
+  {
+    "name": "Attribution Presenter",
+    "copyright": "CFrancisco José Montiel Navarro",
+    "url_lib": "https://github.com/franmontiel/AttributionPresenter",
+    "license": "Apache License 2.0",
+    "url_license": "https://spdx.org/licenses/Apache-2.0.html"
+  },
+
+  {
+    "name": "Moshi",
+    "copyright": "Square Inc.",
+    "url_lib": "https://github.com/square/moshi",
+    "license": "Apache License 2.0",
+    "url_license": "https://spdx.org/licenses/Apache-2.0.html"
+  },
+
+  {
+    "name": "Butterknife",
+    "copyright": "Jake Wharton",
+    "url_lib": "https://github.com/JakeWharton/butterknife",
+    "license": "Apache License 2.0",
+    "url_license": "https://spdx.org/licenses/Apache-2.0.html"
+  }
+]

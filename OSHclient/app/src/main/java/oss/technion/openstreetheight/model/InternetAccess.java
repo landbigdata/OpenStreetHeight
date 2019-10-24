@@ -1,32 +1,38 @@
 package oss.technion.openstreetheight.model;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.net.ConnectivityManager.NetworkCallback;
+import android.net.Network;
 import android.net.NetworkInfo;
+import android.net.NetworkRequest;
 
 import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.BehaviorSubject;
+import io.reactivex.subjects.PublishSubject;
 
 public class InternetAccess {
-    private static final InternetAccessReceiver internetStateReceiver = new InternetAccessReceiver();
-
-    private static final BehaviorSubject<Boolean> subject = BehaviorSubject.create(); // always filled
-
+    private static final BehaviorSubject<Boolean> subject = BehaviorSubject.create();
     private static Context context;
 
     public static void initialize(Context context) {
+        ConnectivityManager cm =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
         InternetAccess.context = context;
 
-        context.registerReceiver(internetStateReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        cm.registerNetworkCallback(new NetworkRequest.Builder().build(), callback);
 
         subject.onNext(isOnline());
     }
 
     public static void deInitialize() {
-        context.unregisterReceiver(internetStateReceiver);
+        ConnectivityManager cm =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        cm.unregisterNetworkCallback(callback);
     }
 
     public static boolean isOnline() {
@@ -39,15 +45,23 @@ public class InternetAccess {
         return connected;
     }
 
+    /**
+     * @return BehaviorSubject
+     */
     public static Observable<Boolean> getBehSubject() {
         return subject;
     }
 
-    public static class InternetAccessReceiver extends BroadcastReceiver {
+    private static NetworkCallback callback = new NetworkCallback() {
+        @Override
+        public void onAvailable(Network network) {
+            subject.onNext(true);
+        }
 
         @Override
-        public void onReceive(Context context, Intent intent) {
-            subject.onNext(isOnline());
+        public void onLost(Network network) {
+            subject.onNext(false);
         }
-    }
+    };
+
 }

@@ -1,7 +1,11 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Overrides resource in AndroidX. Private res so can be changed in other lib version -->
+    <integer name="design_snackbar_text_max_lines" tools:override="true">3</integer>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+
         <item name="colorPrimary">#5665bb</item>
         <item name="colorPrimaryDark">#41456b</item>
     </style>

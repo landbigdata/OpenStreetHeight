@@ -65,14 +65,11 @@ public class GeoCoding {
                     return new OsmBuilding(osm_id, points);
                 })
 
+                // TODO
                 .filter(osmBuilding -> Observable
                         .fromIterable(osmBuilding.points)
-                        .map(point -> CoordinateConversions.getXYZfromLatLonDegrees(point.lat, point.lon, 0))
-                        .collectInto(new Polygon(), (polygon, xy) -> polygon.add(new Point(xy[0], xy[1])))
-                        .map(polygon -> {
-                            double[] xy = CoordinateConversions.getXYZfromLatLonDegrees(lat, lon, 0);
-                            return polygon.contains(new Point(xy[0], xy[1]));
-                        })
+                        .collectInto(new Polygon(), (polygon, xy) -> polygon.add(new Point(xy.lat, xy.lon)))
+                        .map(polygon -> polygon.contains(new Point(lat, lon)))
                         .blockingGet()
                 )
 
@@ -85,11 +82,21 @@ public class GeoCoding {
         JSONArray geometryArray = building
                 .getJSONArray("geometry");
 
-        for (int i = 0; i < geometryArray.length(); i++) {
+
+        outerloop: for (int i = 0; i < geometryArray.length(); i++) {
             JSONObject latLon = geometryArray.getJSONObject(i);
             double pointLat = latLon.getDouble("lat");
             double pointLon = latLon.getDouble("lon");
 
+            // In OSM for buidling points can be duplicated as they may belong to other objects
+            // So we need to filter for duplicates
+            for (LatLng pointCheck : points) {
+                if (pointCheck.lat == pointLat && pointCheck.lon == pointLon) {
+                    continue outerloop;
+                }
+            }
+
+            // Finally add point to list
             points.add(new LatLng(pointLat, pointLon));
         }
 

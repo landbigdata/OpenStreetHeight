@@ -2,6 +2,7 @@ package oss.technion.openstreetheight.model;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Looper;
 import androidx.annotation.Nullable;
 
@@ -19,6 +20,8 @@ import oss.technion.openstreetheight.model.data.LatLng;
 import oss.technion.openstreetheight.model.data.LatLngAlt;
 
 public class FusedLocation {
+    private static final String LAST_LOCATION_KEY = "last_location_key";
+
     private static final BehaviorSubject<LatLngAlt> locationSubject = BehaviorSubject.create();
 
     private static final PublishSubject<Float> horizontalAccuracySubject = PublishSubject.create();
@@ -38,6 +41,15 @@ public class FusedLocation {
     public static void initialize(Context context) {
         fusedLocation = LocationServices.getFusedLocationProviderClient(context);
     }
+
+    public static void saveState(Bundle b) {
+        b.putSerializable(LAST_LOCATION_KEY, lastLocation);
+    }
+
+    public static void restoreState(Bundle b) {
+        lastLocation = (LatLngAlt) b.getSerializable(LAST_LOCATION_KEY);
+    }
+
 
     @SuppressLint("MissingPermission")
     public static void enable() {

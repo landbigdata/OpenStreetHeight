@@ -268,7 +268,6 @@ public class CornerPointsOnPhotoFragment extends Fragment implements CornerPoint
         actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
 
 
-        actionBar.setTitle("");
         drawSurface.subscribeOnDraw(this::drawLinesBetweenPoints);
         drawSurface.invalidate();
 

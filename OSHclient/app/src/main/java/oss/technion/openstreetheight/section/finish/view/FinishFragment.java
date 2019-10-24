@@ -21,10 +21,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.TextView;
-
-import com.franmontiel.attributionpresenter.AttributionPresenter;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,6 +30,7 @@ import butterknife.OnClick;
 import oss.technion.openstreetheight.R;
 import oss.technion.openstreetheight.func.Action;
 import oss.technion.openstreetheight.section.SnackbarDuration;
+import oss.technion.openstreetheight.section.ToastDuration;
 import oss.technion.openstreetheight.section.finish.presenter.FinishPresenter;
 
 public class FinishFragment extends Fragment implements FinishView {
@@ -96,8 +95,6 @@ public class FinishFragment extends Fragment implements FinishView {
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
 
-        actionBar.setTitle("");
-
 
         StateSaver.restoreInstanceState(presenter, savedInstanceState);
         presenter.onStart();
@@ -111,8 +108,8 @@ public class FinishFragment extends Fragment implements FinishView {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onDestroy() {
+        super.onDestroy();
 
         presenter.onStop();
     }
@@ -121,21 +118,14 @@ public class FinishFragment extends Fragment implements FinishView {
         presenter.onShareHeightOsmClick();
     }
 
-    @OnClick(R.id.button_share_height_text) void onShareHeightTextClick() {
+    @OnClick(R.id.button_share_height_friends) void onShareHeightTextClick() {
         presenter.onShareHeightTextClick();
-    }
-
-    @OnClick(R.id.button_how_it_works) void onHowItWorksClick() {
-        presenter.onHowItWorksClick();
     }
 
     @OnClick(R.id.button_repeat) void onRepeatClick() {
         presenter.onRepeatClick();
     }
 
-    @OnClick(R.id.button_licenses) void onLicensesClick() {
-        presenter.onLicensesClick();
-    }
 
 
     @Override
@@ -144,6 +134,29 @@ public class FinishFragment extends Fragment implements FinishView {
         actionBar.setDisplayHomeAsUpEnabled(isShowBackButton);
     }
 
+    @Override
+    public void showToast(@StringRes int string_id, ToastDuration dur) {
+        int duration = 0;
+
+        switch(dur) {
+            case SHORT:
+                duration = Toast.LENGTH_SHORT;
+                break;
+
+            case LONG:
+                duration = Toast.LENGTH_LONG;
+                break;
+        }
+
+        Toast.makeText(getContext(), string_id, duration).show();
+    }
+
+
+    @Override
+    public void replaceProgressBarWithHeightText() {
+        getView().findViewById(R.id.finish_progress).setVisibility(View.GONE);
+        getView().findViewById(R.id.finish_height).setVisibility(View.VISIBLE);
+    }
 
     @Override
     public void setHeightText(@StringRes int placeholder, double heightVal) {
@@ -190,19 +203,7 @@ public class FinishFragment extends Fragment implements FinishView {
         }
     }
 
-    @Override
-    public void showAboutActivity() {
-        ListAdapter adapter = new AttributionPresenter.Builder(getContext())
-                .addAttributions(LicenseProvider.getAttributions())
-                .build()
-                .getAdapter();
 
-        new AlertDialog.Builder(getContext())
-                .setTitle(R.string.finish_licenses)
-                .setPositiveButton(android.R.string.ok, (__, ___) -> {})
-                .setAdapter(adapter, null)
-                .show();
-    }
 
     @Override
     public void dismissCurrentSnackbar() {
@@ -212,12 +213,12 @@ public class FinishFragment extends Fragment implements FinishView {
     }
 
     @Override
-    public Dialog makeTwoButtonDialog(@StringRes int title, @StringRes int message, Object messageArg, @StringRes int button_yes, @StringRes int button_cancel) {
+    public Dialog makeTwoButtonDialog(@StringRes int title, @StringRes int message, Object[] args, @StringRes int button_yes, @StringRes int button_cancel) {
         DialogImpl dialogImpl = new DialogImpl();
 
         AlertDialog dialog = new AlertDialog.Builder(getContext())
                 .setTitle(title)
-                .setMessage(String.format(getString(message), messageArg))
+                .setMessage(String.format(getString(message), args))
                 .setPositiveButton(button_yes, dialogImpl.onOkClick)
                 .setNegativeButton(button_cancel, dialogImpl.onCancelClick)
                 .create();

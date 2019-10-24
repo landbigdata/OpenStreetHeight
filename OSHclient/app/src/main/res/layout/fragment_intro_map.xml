@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+        app:title=" "/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
-                android:text="@string/intro_pick_corners" />
+                android:text="@string/intro_pick_building" />
         </FrameLayout>
     </LinearLayout>
 

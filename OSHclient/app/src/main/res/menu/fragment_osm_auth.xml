@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_skip"
+        android:title="@string/nav_skip"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/nav_done"
+        android:title="@string/nav_done"
+        android:icon="@drawable/ic_done_white_24dp"
+        app:showAsAction="always" />
+
+
+</menu>

@@ -7,4 +7,5 @@ public class LatLngAlt extends LatLng {
         super(lat, lon);
         this.alt = alt;
     }
+
 }
